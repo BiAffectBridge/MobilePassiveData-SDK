@@ -37,24 +37,19 @@ let package = Package(
             name: "MotionSensor",
             targets: ["MotionSensor"]),
         .library(
-            name: "AudioRecorder",
-            targets: ["AudioRecorder"]),
-        .library(
             name: "LocationAuthorization",
             targets: ["LocationAuthorization"]),
         .library(
             name: "WeatherRecorder",
             targets: ["WeatherRecorder"]),
-        .library(
-            name: "DistanceRecorder",
-            targets: ["DistanceRecorder"]),
+
     ],
     dependencies: [
         // Dependencies declare other packages that this package depends on.
         // .package(url: /* package url */, from: "1.0.0"),
         .package(name: "JsonModel",
-                 url: "https://github.com/Sage-Bionetworks/JsonModel-Swift.git",
-                 "1.6.0"..<"3.0.0"),
+                 url: "https://github.com/BiAffectBridge/JsonModel-Swift.git",
+                 from: "2.2.2"),
     ],
     targets: [
         // Targets are the basic building blocks of a package. A target can define a module or a test suite.
@@ -81,24 +76,6 @@ let package = Package(
         // separate module b/c packages can have either Swift or Obj-c.
         .target(name: "ExceptionHandler",
                 dependencies: []),
-        
-        // Supports recording audio using the microphone with a standardized permission and
-        // recording structure. This library implements the recorder associated with the
-        // `AudioRecorderConfiguration` defined in the base library for this package.
-        //
-        // Use of this library requires registering the `AudioRecorderAuthorization` adapter and
-        // adding any privacy keys for using the microphone to the app `Info.Plist`.
-        .target(name: "AudioRecorder",
-                dependencies: [
-                    "JsonModel",
-                    "MobilePassiveData",
-                ]),
-        .testTarget(
-            name: "AudioRecorderTests",
-            dependencies: [
-                "AudioRecorder",
-                "SharedResourcesTests",
-            ]),
         
         // Supports the use of `CoreMotion` with a standardized permission and recording structure.
         // This library implements the recorder associated with the `MotionRecorderConfiguration`
@@ -145,18 +122,6 @@ let package = Package(
                 "WeatherRecorder",
                 "SharedResourcesTests",
             ]),
-        
-        // Recorder for using `CoreLocation` and `CoreMotion` to record distances travelled.
-        //
-        // Use of this library requires adding appropriate privacy keys for using GPS and
-        // motion sensors to the app `Info.Plist`.
-        .target(name: "DistanceRecorder",
-                dependencies: [
-                    "JsonModel",
-                    "MobilePassiveData",
-                    "MotionSensor",
-                    "LocationAuthorization",
-                ]),
         
         // Unit test utilities.
         .target(name: "NSLocaleSwizzle",

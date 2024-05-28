@@ -3,11 +3,11 @@
     "pins": [
       {
         "package": "JsonModel",
-        "repositoryURL": "https://github.com/Sage-Bionetworks/JsonModel-Swift.git",
+        "repositoryURL": "https://github.com/BiAffectBridge/JsonModel-Swift.git",
         "state": {
           "branch": null,
-          "revision": "4431edad387697d8db879212c4ca8dacbc436b5f",
-          "version": "1.6.0"
+          "revision": "3274a1192148b9652885d4a6baa50462ae9842b8",
+          "version": "2.2.2"
         }
       }
     ]
