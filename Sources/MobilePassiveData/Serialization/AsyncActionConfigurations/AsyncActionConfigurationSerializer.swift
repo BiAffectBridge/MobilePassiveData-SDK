@@ -1,6 +1,6 @@
 //
 //  AsyncActionConfigurationSerializer.swift
-//  
+//
 //
 
 import Foundation
@@ -16,12 +16,6 @@ public struct AsyncActionType : TypeRepresentable, Codable, Hashable {
     public init(rawValue: String) {
         self.rawValue = rawValue
     }
-    
-    /// Distance Recorder Configuration
-    public static let distance: AsyncActionType = "distance"
-    
-    /// Microphone Recorder Configuration.
-    public static let microphone: AsyncActionType = "microphone"
 
     /// Motion Recorder Configuration.
     public static let motion: AsyncActionType = "motion"
@@ -31,7 +25,7 @@ public struct AsyncActionType : TypeRepresentable, Codable, Hashable {
     
     /// List of all the standard types.
     public static func allStandardTypes() -> [AsyncActionType] {
-        [.distance, .microphone, .motion, .weather]
+        [.motion, .weather]
     }
 }
 
@@ -50,7 +44,6 @@ extension AsyncActionType : DocumentableStringLiteral {
 /// `SerializableAsyncActionConfiguration` is the base implementation for `AsyncActionConfiguration`
 /// that is serialized using the `Codable` protocol and the polymorphic serialization defined by
 /// this framework.
-///
 public protocol SerializableAsyncActionConfiguration : AsyncActionConfiguration, PolymorphicRepresentable, Encodable {
     var asyncActionType: AsyncActionType { get }
 }
@@ -59,7 +52,7 @@ extension SerializableAsyncActionConfiguration {
     public var typeName: String { asyncActionType.stringValue }
 }
 
-public final class AsyncActionConfigurationSerializer : IdentifiableInterfaceSerializer, PolymorphicSerializer {
+public final class AsyncActionConfigurationSerializer : GenericPolymorphicSerializer<AsyncActionConfiguration>, DocumentableInterface {
     public var documentDescription: String? {
         """
         `AsyncActionConfiguration` defines general configuration for an asynchronous action
@@ -74,26 +67,9 @@ public final class AsyncActionConfigurationSerializer : IdentifiableInterfaceSer
     }
 
     override init() {
-        self.examples = [
-            AudioRecorderConfigurationObject.examples().first!,
-            DistanceRecorderConfigurationObject.examples().first!,
+        super.init([
             MotionRecorderConfigurationObject.examples().first!,
             WeatherConfigurationObject.examples().first!,
-        ]
-    }
-
-    public private(set) var examples: [AsyncActionConfiguration]
-
-    public override class func typeDocumentProperty() -> DocumentProperty {
-        .init(propertyType: .reference(AsyncActionType.documentableType()))
-    }
-
-    public func add(_ example: SerializableAsyncActionConfiguration) {
-        if let idx = examples.firstIndex(where: { $0.typeName == example.typeName }) {
-            examples.remove(at: idx)
-        }
-        examples.append(example)
+        ])
     }
 }
-
-
