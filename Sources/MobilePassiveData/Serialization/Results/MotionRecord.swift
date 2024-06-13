@@ -311,9 +311,9 @@ extension MotionRecord : DocumentableStruct {
         case .uptime:
             return .init(propertyType: .primitive(.number), propertyDescription: "System clock time.")
         case .timestamp:
-            return .init(propertyType: .primitive(.number), propertyDescription: "Time that the system has been awake since last reboot.")
+            return .init(propertyType: .primitive(.number), propertyDescription: "Duration (in seconds) from when the recording was started.")
         case ._stepPath:
-            return .init(propertyType: .primitive(.string), propertyDescription: "An identifier marking the current step.")
+            return .init(propertyType: .primitive(.string), propertyDescription: "An identifier marking the current step (or response timing).")
         case .timestampDate:
             return .init(propertyType: .format(.dateTime), propertyDescription: "The date timestamp when the measurement was taken (if available).")
         case .sensorType:
