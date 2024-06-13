@@ -20,8 +20,6 @@ open class MobilePassiveDataFactory : ResultDataFactory {
         self.resultSerializer.add(WeatherResult())
         
         // Add root documentables
-        self.registerRootObject(audioLevelRecordSchema)
-        self.registerRootObject(distanceRecordSchema)
         self.registerRootObject(motionRecordSchema)
         self.registerRootObject(WeatherResult())
     }

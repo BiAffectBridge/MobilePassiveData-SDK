@@ -63,7 +63,7 @@ public final class AsyncActionConfigurationSerializer : GenericPolymorphicSerial
     }
     
     public var jsonSchema: URL {
-        URL(string: "\(self.interfaceName).json", relativeTo: kSageJsonSchemaBaseURL)!
+        URL(string: "\(self.interfaceName).json", relativeTo: kBaseJsonSchemaURL)!
     }
 
     override init() {

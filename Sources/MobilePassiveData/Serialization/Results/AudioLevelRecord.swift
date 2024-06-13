@@ -7,7 +7,7 @@ import Foundation
 import JsonModel
 
 public let audioLevelRecordSchema = DocumentableRootArray(rootDocumentType: AudioLevelRecord.self,
-                                              jsonSchema: .init(string: "\(AudioLevelRecord.self).json", relativeTo: kSageJsonSchemaBaseURL)!,
+                                              jsonSchema: .init(string: "\(AudioLevelRecord.self).json", relativeTo: kBaseJsonSchemaURL)!,
                                               documentDescription: "A list of timestamped dbFS audio level records recorded for the duration of an assessment.")
 
 public struct AudioLevelRecord : SampleRecord, Codable {

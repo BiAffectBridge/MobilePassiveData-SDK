@@ -49,7 +49,7 @@ let package = Package(
         // .package(url: /* package url */, from: "1.0.0"),
         .package(name: "JsonModel",
                  url: "https://github.com/BiAffectBridge/JsonModel-Swift.git",
-                 from: "2.2.2"),
+                 from: "2.5.0"),
     ],
     targets: [
         // Targets are the basic building blocks of a package. A target can define a module or a test suite.

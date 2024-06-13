@@ -8,7 +8,7 @@ import CoreLocation
 import JsonModel
 
 public let distanceRecordSchema = DocumentableRootArray(rootDocumentType: DistanceRecord.self,
-                                              jsonSchema: .init(string: "\(DistanceRecord.self).json", relativeTo: kSageJsonSchemaBaseURL)!,
+                                              jsonSchema: .init(string: "\(DistanceRecord.self).json", relativeTo: kBaseJsonSchemaURL)!,
                                               documentDescription: "A list of distance measurements that are defined relative to one another rather than using GPS coordinates.")
 
 /// A `DistanceRecord` is a `Codable` implementation of `SampleRecord` that can be used

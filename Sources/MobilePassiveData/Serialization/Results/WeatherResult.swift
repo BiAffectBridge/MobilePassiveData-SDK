@@ -59,7 +59,7 @@ extension WeatherResult : DocumentableRootObject {
     }
     
     public var jsonSchema: URL {
-        URL(string: "\(type(of: self)).json", relativeTo: kSageJsonSchemaBaseURL)!
+        URL(string: "\(type(of: self)).json", relativeTo: kBaseJsonSchemaURL)!
     }
     
     public var documentDescription: String? {

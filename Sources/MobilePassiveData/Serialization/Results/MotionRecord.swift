@@ -7,7 +7,7 @@ import Foundation
 import JsonModel
 
 public let motionRecordSchema = DocumentableRootArray(rootDocumentType: MotionRecord.self,
-                                          jsonSchema: .init(string: "\(MotionRecord.self).json", relativeTo: kSageJsonSchemaBaseURL)!,
+                                          jsonSchema: .init(string: "\(MotionRecord.self).json", relativeTo: kBaseJsonSchemaURL)!,
                                           documentDescription: "A list of motion sensor records.")
 
 /// A `MotionRecord` is a `Codable` implementation of `SampleRecord` that can be used
